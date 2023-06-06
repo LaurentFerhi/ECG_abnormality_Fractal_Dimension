@@ -1,6 +1,5 @@
 """Helper functions"""
 import numpy as np
-from numba import jit
 from math import log, floor
 
 all = ["_embed", "_linear_regression", "_log_n", "_xlog2x"]
@@ -58,7 +57,6 @@ def _embed(x, order=3, delay=1):
         return Y
 
 
-@jit("UniTuple(float64, 2)(float64[:], float64[:])", nopython=True)
 def _linear_regression(x, y):
     """Fast linear regression using Numba.
 
@@ -91,7 +89,6 @@ def _linear_regression(x, y):
     return slope, intercept
 
 
-@jit("i8[:](f8, f8, f8)", nopython=True)
 def _log_n(min_n, max_n, factor):
     """
     Creates a list of integer values by successively multiplying a minimum
